@@ -1,0 +1,3 @@
+export {
+  TabsTypeList,
+  } from "./home";

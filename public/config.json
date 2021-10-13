@@ -1,0 +1,7 @@
+{
+  "BASE_API": "",
+  "HOST": {
+    "LOGIN": "http://localhost:8082/#/login",
+    "FRONT": "http://localhost:8082"
+  }
+}
