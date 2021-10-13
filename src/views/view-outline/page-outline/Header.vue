@@ -52,27 +52,6 @@ export default class Header extends Vue {
   showExit() {
     ipcRenderer.send("close", "关闭客户端");
   }
-
-  // 打开子窗口
-  openChild(type) {
-    let data;
-    switch (type) {
-      case "feedBack":
-        data = { path: type, width: 440, height: 360 };
-        ipcRenderer.send("openChild", data);
-        break;
-      case "about":
-        data = { path: type, width: 440, height: 360 };
-        ipcRenderer.send("openChild", data);
-        break;
-      case "weather":
-        data = { path: type, width: 800, height: 460 };
-        ipcRenderer.send("openChild", data);
-        break;
-      default:
-        break;
-    }
-  }
 }
 </script>
 <style lang="stylus" scoped>

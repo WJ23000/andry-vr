@@ -20,6 +20,9 @@ export default class house extends Vue {
 </script>
 <style lang="stylus" scoped>
 .house
+  background #333333
+  color #ffffff
+  height 100%
   .content
     padding 12px 16px
 </style>

@@ -22,12 +22,12 @@ async function createWindow() {
     width: 800,
     height: 600,
     frame: false, // 设置为false隐藏标题栏和菜单栏
-    resizable: false, // 设置为false关闭拖拽窗口边框改变窗口大小
+    resizable: true, // 设置为false关闭拖拽窗口边框改变窗口大小
     icon: path.join(__static, "andry.png"), // 设置icon
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false,
-      devTools: false, // 设置为false解决打包后ctrl+shift+i使用devtools开发者工具
+      devTools: true, // 设置为false解决打包后ctrl+shift+i使用devtools开发者工具
     },
   });
 
@@ -41,7 +41,7 @@ async function createWindow() {
     win.loadURL("app://./index.html");
   }
   // 关闭开发者工具使用
-  win.webContents.closeDevTools();
+  // win.webContents.closeDevTools();
 }
 
 // 监听渲染进程发送的退出应用事件并接收参数
@@ -71,25 +71,25 @@ ipcMain.on("custom-min", (event, res) => {
 });
 
 // 子窗口
-function openChild(res) {
+function openChild(path) {
   childWin = new BrowserWindow({
-    width: res.width ? res.width : 600,
-    height: res.height ? res.height : 400,
+    width: 800,
+    height: 600,
     parent: win, // 子窗口一直保持在父窗口上方
     modal: true, // 阻止对父窗口的操作
     frame: false, // 设置为false隐藏标题栏和菜单栏
-    resizable: false, // 设置为false关闭拖拽窗口边框改变窗口大小
+    resizable: true, // 设置为false关闭拖拽窗口边框改变窗口大小
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false,
-      devTools: false, // 设置为false解决打包后ctrl+shift+i使用devtools开发者工具
+      devTools: true, // 设置为false解决打包后ctrl+shift+i使用devtools开发者工具
     },
   });
 
-  childWin.loadURL(winURL + `#/${res.path}`);
+  childWin.loadURL(winURL + `#/${path}`);
 
   // 关闭开发者工具使用
-  childWin.webContents.closeDevTools();
+  // childWin.webContents.closeDevTools();
 }
 
 // 监听渲染进程发送的显示子窗口事件并接收参数
